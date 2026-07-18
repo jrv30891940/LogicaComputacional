@@ -1,0 +1,59 @@
+/* =========================================================
+   ANIMACIONES
+   Solo animaciones suaves: aparición al hacer scroll y
+   micro-interacciones en hover. Nada exagerado.
+========================================================= */
+
+/* Elementos marcados con .reveal inician invisibles y se
+   desplazan ligeramente hacia arriba; navigation.js /
+   animations.js agregan la clase .is-visible cuando
+   entran en el viewport. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pequeño desfase entre elementos de una misma grilla para
+   que la aparición se sienta orquestada, no simultánea. */
+.grid .reveal:nth-child(2)  { transition-delay: 0.08s; }
+.grid .reveal:nth-child(3)  { transition-delay: 0.16s; }
+.grid .reveal:nth-child(4)  { transition-delay: 0.24s; }
+.grid .reveal:nth-child(5)  { transition-delay: 0.32s; }
+
+/* Pulso suave del indicador de nodo, evocando el estado de
+   sincronización de un servidor. */
+@keyframes node-pulse {
+  0%   { box-shadow: 0 0 0 4px rgba(95, 168, 211, 0.18); }
+  50%  { box-shadow: 0 0 0 8px rgba(95, 168, 211, 0.06); }
+  100% { box-shadow: 0 0 0 4px rgba(95, 168, 211, 0.18); }
+}
+
+.node-dot {
+  animation: node-pulse 2.6s ease-in-out infinite;
+}
+
+/* Menú móvil: transición de apertura */
+.navbar__menu {
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+/* Respeta la preferencia del usuario de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

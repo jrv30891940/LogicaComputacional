@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consistencia en Sistemas Distribuidos | Lógica Computacional</title>
+  <meta name="description" content="Proyecto académico sobre consistencia en sistemas distribuidos: modelos, caso real y mejora mediante inteligencia artificial.">
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ===================== BARRA DE NAVEGACIÓN ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#inicio" class="navbar__brand">
+        <span class="node-dot" aria-hidden="true"></span>
+        Consistencia<span class="navbar__brand-accent">.dist</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="navbar__menu" id="navMenu" aria-label="Navegación principal">
+        <a href="#inicio" class="navbar__link" data-section="inicio">Inicio</a>
+        <a href="#introduccion" class="navbar__link" data-section="introduccion">Introducción</a>
+        <a href="#contenido" class="navbar__link" data-section="contenido">Contenido</a>
+        <a href="#videos" class="navbar__link" data-section="videos">Videos</a>
+        <a href="#conclusion" class="navbar__link" data-section="conclusion">Conclusión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio">
+      <div class="hero__content reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> Lógica Computacional · Proyecto grupal</p>
+        <h1 class="hero__title">Consistencia en <span class="text-accent">Sistemas Distribuidos</span></h1>
+        <p class="hero__subtitle">
+          Cuando varios servidores comparten la misma información, mantenerlos de acuerdo no es automático.
+          Este proyecto explora qué es la consistencia, sus modelos, un caso real de conflicto y cómo la
+          inteligencia artificial ayuda a resolverlo.
+        </p>
+        <div class="hero__actions">
+          <a href="#introduccion" class="btn btn--primary" id="btnExplorar">Explorar el proyecto</a>
+          <a href="#videos" class="btn btn--ghost">Ver videos</a>
+        </div>
+      </div>
+      <div class="hero__media reveal" aria-hidden="true">
+        <img src="img/hero-nodes.svg" alt="" width="480" height="420" loading="eager">
+      </div>
+    </section>
+
+    <!-- ===================== INTRODUCCIÓN ===================== -->
+    <section class="section" id="introduccion">
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 01 — Introducción</p>
+        <h2>¿De qué trata este trabajo?</h2>
+      </div>
+
+      <div class="card card--split reveal">
+        <div class="card__media">
+          <img src="img/sistemas-distribuidos.svg" alt="Tres servidores replicando la misma información entre sí" loading="lazy">
+        </div>
+        <div class="card__body">
+          <h3>¿Qué es un sistema distribuido?</h3>
+          <p>
+            Un sistema distribuido es un conjunto de computadoras independientes que se comportan, ante el
+            usuario, como un único sistema. En vez de depender de un solo servidor, la información y el
+            procesamiento se reparten entre varios nodos que se comunican entre sí por red.
+          </p>
+          <h3>¿Qué es la consistencia?</h3>
+          <p>
+            La consistencia es la garantía de que todos los nodos de ese sistema muestran, tarde o temprano,
+            la misma versión de los datos. Si un nodo dice que un asiento está disponible y otro dice que ya
+            fue vendido, el sistema es inconsistente.
+          </p>
+          <h3>¿Por qué importa?</h3>
+          <p>
+            Porque de ella depende la confiabilidad del sistema completo: ventas duplicadas, saldos
+            incorrectos o reservas dobles son consecuencias directas de una consistencia mal gestionada.
+            Entender sus modelos permite decidir qué tanto sacrificar velocidad a cambio de exactitud.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTENIDO ===================== -->
+    <section class="section section--muted" id="contenido">
+
+      <!-- Tipos de consistencia -->
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 02 — Tipos de consistencia</p>
+        <h2>Tres formas de mantener el acuerdo entre servidores</h2>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card reveal">
+          <span class="badge badge--strong">Fuerte</span>
+          <h3>Consistencia fuerte</h3>
+          <p>
+            Antes de confirmar cualquier operación, el sistema verifica el estado en todos los nodos
+            involucrados. Ninguna venta doble puede ocurrir, pero cada operación es más lenta porque
+            depende de esa confirmación conjunta.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span class="badge badge--eventual">Eventual</span>
+          <h3>Consistencia eventual</h3>
+          <p>
+            Los nodos no siempre se verifican entre sí antes de actuar, pero se sincronizan después. Si se
+            detecta un conflicto, un mecanismo de prioridad decide qué nodo prevalece, evitando que la
+            inconsistencia se vuelva permanente.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span class="badge badge--weak">Débil</span>
+          <h3>Consistencia débil</h3>
+          <p>
+            No existe ninguna verificación entre nodos. Cada uno actúa de forma independiente, lo que la
+            hace la opción más rápida y, al mismo tiempo, la más propensa a errores como ventas duplicadas.
+          </p>
+        </article>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="compare-table">
+          <caption>Comparación rápida entre los tres modelos</caption>
+          <thead>
+            <tr>
+              <th scope="col">Modelo</th>
+              <th scope="col">Verificación entre nodos</th>
+              <th scope="col">Velocidad</th>
+              <th scope="col">Riesgo de conflicto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Fuerte</th>
+              <td>Siempre, antes de confirmar</td>
+              <td>Baja</td>
+              <td>Nulo</td>
+            </tr>
+            <tr>
+              <th scope="row">Eventual</th>
+              <td>Solo si hay conflicto detectado</td>
+              <td>Media</td>
+              <td>Bajo, mitigado por prioridad</td>
+            </tr>
+            <tr>
+              <th scope="row">Débil</th>
+              <td>Ninguna</td>
+              <td>Alta</td>
+              <td>Alto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Caso de la vida real -->
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 03 — Caso de la vida real</p>
+        <h2>La reserva de vuelos: cuando dos servidores venden el mismo asiento</h2>
+      </div>
+
+      <div class="card card--split card--reverse reveal">
+        <div class="card__media">
+          <img src="img/reserva-vuelos.svg" alt="Dos servidores solicitando el mismo asiento de avión al mismo tiempo" loading="lazy">
+        </div>
+        <div class="card__body">
+          <p>
+            Imaginemos una aerolínea con servidores en distintas ciudades. Dos personas, en países distintos,
+            intentan comprar el mismo asiento casi al mismo instante. Cada solicitud llega a un servidor
+            diferente.
+          </p>
+          <p>
+            Aquí entra la <strong>latencia de red</strong>: el tiempo que tarda un mensaje en viajar de un
+            servidor a otro. Si esa latencia es alta, ningún servidor se entera a tiempo de lo que el otro
+            está haciendo, y ambos pueden confirmar la venta del mismo asiento: una <strong>venta doble</strong>.
+          </p>
+          <blockquote class="quote">
+            El problema no es que los servidores fallen; el problema es que no se enteran a tiempo de lo que
+            el otro ya hizo.
+          </blockquote>
+          <p>
+            Este caso conecta directamente con la consistencia: es exactamente el escenario que cada modelo
+            —fuerte, eventual o débil— resuelve de manera distinta.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mejora con IA -->
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 04 — Mejora con Inteligencia Artificial</p>
+        <h2>Cómo la IA ayuda a coordinar servidores</h2>
+      </div>
+
+      <div class="card card--split reveal">
+        <div class="card__media">
+          <img src="img/ia-sistemas.svg" alt="Nodo de inteligencia artificial coordinando cuatro servidores" loading="lazy">
+        </div>
+        <div class="card__body">
+          <p>
+            En sistemas distribuidos modernos, la inteligencia artificial se usa como un árbitro que decide
+            qué nodo debe prevalecer cuando hay un conflicto, en lugar de dejarlo al azar.
+          </p>
+          <ul class="list-check">
+            <li><strong>Algoritmos predictivos:</strong> anticipan en qué momentos es más probable que ocurra
+              un conflicto, según patrones de tráfico o latencia.</li>
+            <li><strong>Replicación de datos:</strong> la IA decide cuándo y hacia qué nodos copiar la
+              información más reciente, para que la sincronización sea más eficiente.</li>
+            <li><strong>Prevención de conflictos:</strong> al asignar prioridades dinámicas a cada servidor,
+              la IA evita que dos nodos confirmen la misma operación al mismo tiempo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ventajas de la IA -->
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 05 — Ventajas de la Inteligencia Artificial</p>
+        <h2>Qué se gana al incorporarla</h2>
+      </div>
+
+      <div class="grid grid--5">
+        <article class="stat-card reveal">
+          <h3>Menos errores</h3>
+          <p>Reduce las inconsistencias que ocurrirían si los conflictos se resolvieran al azar.</p>
+        </article>
+        <article class="stat-card reveal">
+          <h3>Más velocidad</h3>
+          <p>Permite decisiones casi inmediatas sin esperar la confirmación de todos los nodos.</p>
+        </article>
+        <article class="stat-card reveal">
+          <h3>Uso eficiente de la red</h3>
+          <p>Optimiza cuándo y hacia dónde sincronizar datos, evitando tráfico innecesario.</p>
+        </article>
+        <article class="stat-card reveal">
+          <h3>Menos pérdidas económicas</h3>
+          <p>Evita ventas dobles y transacciones inválidas que generan reembolsos o reclamos.</p>
+        </article>
+        <article class="stat-card reveal">
+          <h3>Mayor confiabilidad</h3>
+          <p>El sistema completo se comporta de forma más predecible ante los mismos conflictos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEOS ===================== -->
+    <section class="section" id="videos">
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> Exposición en video</p>
+        <h2>Recorrido completo del tema</h2>
+        <p class="section__intro">
+          Cada integrante explica una parte del proyecto. Al final, un video adicional recorre el
+          pseudocódigo que simula los tres modelos de consistencia.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/hero-nodes.svg">
+              <source src="videos/01-introduccion.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>1. Introducción</h3>
+          <p>Qué es la consistencia, qué son los sistemas distribuidos y por qué importa.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/hero-nodes.svg">
+              <source src="videos/02-tipos-de-consistencia.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>2. Tipos de consistencia</h3>
+          <p>Explicación y comparación de la consistencia fuerte, eventual y débil.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/reserva-vuelos.svg">
+              <source src="videos/03-caso-real.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>3. Caso de la vida real</h3>
+          <p>El ejemplo de la reserva de vuelos y la venta doble del mismo asiento.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/ia-sistemas.svg">
+              <source src="videos/04-mejora-con-ia.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>4. Mejora con Inteligencia Artificial</h3>
+          <p>Algoritmos predictivos, replicación de datos y prevención de conflictos.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/ia-sistemas.svg">
+              <source src="videos/05-ventajas-de-la-ia.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>5. Ventajas de la IA</h3>
+          <p>Menos errores, más velocidad y mayor confiabilidad del sistema.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/hero-nodes.svg">
+              <source src="videos/06-conclusion.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>6. Conclusión</h3>
+          <p>Resumen del trabajo grupal y cierre de la exposición.</p>
+        </article>
+
+        <article class="video-card video-card--wide reveal">
+          <div class="video-card__player">
+            <video controls preload="metadata" poster="img/hero-nodes.svg">
+              <source src="videos/07-pseudocodigo.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de este video.
+            </video>
+          </div>
+          <h3>7. Explicación del pseudocódigo</h3>
+          <p>
+            Recorrido por el pseudocódigo que simula los tres modelos de consistencia sobre un sistema de
+            venta de asientos, y el reporte final que compara sus resultados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== CONCLUSIÓN ===================== -->
+    <section class="section section--dark" id="conclusion">
+      <div class="section__header reveal">
+        <p class="eyebrow eyebrow--light"><span class="node-dot node-dot--light" aria-hidden="true"></span> Conclusión</p>
+        <h2>Lo que nos deja este proyecto</h2>
+      </div>
+
+      <div class="card card--conclusion reveal">
+        <p>
+          La consistencia no es un detalle técnico menor: es la diferencia entre un sistema confiable y uno
+          que vende el mismo asiento dos veces. Vimos que la consistencia fuerte prioriza la seguridad sobre
+          la velocidad, la débil hace lo contrario, y la eventual busca un punto intermedio.
+        </p>
+        <p>
+          La inteligencia artificial no elimina el problema, pero cambia las reglas del juego: en lugar de
+          resolver los conflictos al azar o dejarlos sin resolver, los anticipa y los arbitra con criterio,
+          haciendo que sistemas distribuidos grandes sean, a la vez, rápidos y confiables.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="node-dot node-dot--light" aria-hidden="true"></span>
+        <strong>Consistencia en Sistemas Distribuidos</strong>
+      </div>
+      <p>Proyecto de la materia Lógica Computacional</p>
+      <p class="footer__authors">Autores: [Nombre del integrante 1], [Nombre del integrante 2], [Nombre del integrante 3]</p>
+      <p>[Nombre de la universidad]</p>
+      <p class="footer__year" id="footerYear">2026</p>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/animations.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
