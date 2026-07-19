@@ -37,6 +37,7 @@
         <a href="#introduccion" class="navbar__link" data-section="introduccion">Introducción</a>
         <a href="#contenido" class="navbar__link" data-section="contenido">Contenido</a>
         <a href="#conclusion" class="navbar__link" data-section="conclusion">Conclusión</a>
+        <a href="#pseudocodigo" class="navbar__link" data-section="pseudocodigo">Pseudocódigo</a>
       </nav>
     </div>
   </header>
@@ -100,7 +101,7 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1vAuZkwbVCbVgv5h8s2yWDLm51yc0HARn/preview" title="Video: Introducción, presentado por Bucarito" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Jesús Bucarito</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Juan Ignacio García Hernández</strong></p>
       </div>
     </section>
 
@@ -182,7 +183,7 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1trYLrHnFOy5kgDXeomBR8ZLb94ZX51MU/preview" title="Video: Tipos de consistencia, presentado por Luis" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Luis Farias</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Luis</strong></p>
       </div>
 
       <!-- Caso de la vida real -->
@@ -221,7 +222,7 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1OV9w119VjDpU3MYZf4iYpRU3fi1y5MXT/preview" title="Video: Caso de la vida real, presentado por Jonathan" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Jonathan Torrealba</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Hernesto Quinto de la Vecindad</strong></p>
       </div>
 
       <!-- Mejora con IA -->
@@ -254,7 +255,7 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1BZnmH7i-aGY-Sx1z7IK-S8XDf95MVsFW/preview" title="Video: Mejora con Inteligencia Artificial, presentado por Jesús" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Jesús Rivera</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Jesús</strong></p>
       </div>
 
       <!-- Ventajas de la IA -->
@@ -290,7 +291,7 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1HfqleXkITXLfQEaleotvQgNurvZ1L-v7/preview" title="Video: Ventajas de la IA, presentado por Levi" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Yascarly Martínez</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Petronila de los Ángeles</strong></p>
       </div>
     </section>
 
@@ -318,7 +319,246 @@
         <div class="video-embed__frame">
           <iframe src="https://drive.google.com/file/d/1O8v1mltuys-EzyMhkU6Mufhw_KsGmhVg/preview" title="Video: Conclusión, presentado por Kalmita" allow="autoplay" loading="lazy"></iframe>
         </div>
-        <p class="video-embed__caption">Presenta: <strong>Yonaikel Leiva</strong></p>
+        <p class="video-embed__caption">Presenta: <strong>Kalmita</strong></p>
+      </div>
+    </section>
+
+    <!-- ===================== PSEUDOCÓDIGO ===================== -->
+    <section class="section" id="pseudocodigo">
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> Anexo técnico</p>
+        <h2>Pseudocódigo de la simulación</h2>
+        <p class="section__intro">
+          Este pseudocódigo simula los tres modelos de consistencia sobre un sistema de venta de asientos:
+          4 servidores compiten por 10 asientos, con un generador pseudoaleatorio propio (sin usar
+          funciones predefinidas) y un reporte final que compara los resultados de cada modelo.
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-block__header">
+          <span class="code-block__dot" aria-hidden="true"></span>
+          <span class="code-block__dot" aria-hidden="true"></span>
+          <span class="code-block__dot" aria-hidden="true"></span>
+          <span class="code-block__filename">Simulacion_Consistencia_Sistemas_Distribuidos.psc</span>
+        </div>
+        <pre class="code-block__body"><code>Proceso Simulacion_Consistencia_Sistemas_Distribuidos
+
+    // DECLARACIÓN DE VARIABLES SIMPLES
+    Definir numServidores, numAsientos Como Entero;
+    Definir i, j, k Como Entero;
+    Definir servidorGanador, servidorPerdedor Como Entero;
+    Definir asientoSolicitado Como Entero;
+    Definir latenciaMs Como Real;
+    Definir hayConflicto Como Logico;
+    Definir tipoConsistencia Como Cadena;
+    Definir totalVentasDobles, totalVentasExitosas Como Entero;
+    Definir probabilidadConflicto, umbralIA Como Real;
+    Definir opcion Como Entero;
+    Definir semilla Como Entero;
+    Definir valorTemp Como Entero;
+
+    // DECLARACIÓN DE ARREGLOS Y MATRICES
+    Definir estadoAsientos Como Entero;
+    Definir latenciaServidor Como Entero;
+    Definir prioridadIA Como Real;
+    Definir bitacoraVentas Como Entero;
+
+    numServidores &lt;- 4;
+    numAsientos &lt;- 10;
+    totalVentasDobles &lt;- 0;
+    totalVentasExitosas &lt;- 0;
+    umbralIA &lt;- 0.7;
+    semilla &lt;- 7919;
+
+    Dimension estadoAsientos[5, 11];
+    Dimension latenciaServidor[5];
+    Dimension prioridadIA[5];
+    Dimension bitacoraVentas[5, 11];
+
+    // INICIALIZACIÓN DE ARREGLOS Y MATRICES
+    Para i &lt;- 1 Hasta numServidores Con Paso 1 Hacer
+
+        semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+        latenciaServidor[i] &lt;- 20 + (semilla MOD (300 - 20 + 1));
+
+        semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+        valorTemp &lt;- 1 + (semilla MOD 100);
+        prioridadIA[i] &lt;- valorTemp / 100;
+
+        Para j &lt;- 1 Hasta numAsientos Con Paso 1 Hacer
+            estadoAsientos[i, j] &lt;- 0;
+            bitacoraVentas[i, j] &lt;- 0;
+        FinPara
+    FinPara
+
+    // MENÚ DE SELECCIÓN DEL MODELO DE CONSISTENCIA
+    Escribir "====================================================";
+    Escribir "  SIMULACIÓN: CONSISTENCIA EN SISTEMAS DISTRIBUIDOS";
+    Escribir "====================================================";
+    Escribir "Seleccione el modelo de consistencia a simular:";
+    Escribir "1. Consistencia Fuerte";
+    Escribir "2. Consistencia Eventual";
+    Escribir "3. Consistencia Debil";
+    Escribir "Ingrese una opcion (1-3): ";
+    Leer opcion;
+
+    Segun opcion Hacer
+        1: tipoConsistencia &lt;- "FUERTE";
+        2: tipoConsistencia &lt;- "EVENTUAL";
+        3: tipoConsistencia &lt;- "DEBIL";
+        De Otro Modo:
+            tipoConsistencia &lt;- "EVENTUAL";
+            Escribir "Opcion invalida, se usara Consistencia Eventual por defecto.";
+    FinSegun
+
+    Escribir "";
+    Escribir "Modelo seleccionado: ", tipoConsistencia;
+    Escribir "----------------------------------------------------";
+
+    // SIMULACIÓN DE SOLICITUDES DE COMPRA DE ASIENTOS
+    Para k &lt;- 1 Hasta numAsientos Con Paso 1 Hacer
+
+        asientoSolicitado &lt;- k;
+        hayConflicto &lt;- Falso;
+
+        semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+        servidorGanador &lt;- 1 + (semilla MOD numServidores);
+
+        semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+        servidorPerdedor &lt;- 1 + (semilla MOD numServidores);
+
+        Mientras servidorPerdedor = servidorGanador Hacer
+            semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+            servidorPerdedor &lt;- 1 + (semilla MOD numServidores);
+        FinMientras
+
+        latenciaMs &lt;- (latenciaServidor[servidorGanador] + latenciaServidor[servidorPerdedor]) / 2;
+
+        semilla &lt;- (semilla * 9301 + 49297) MOD 233280;
+        valorTemp &lt;- 1 + (semilla MOD 100);
+        probabilidadConflicto &lt;- valorTemp / 100;
+
+        Escribir "";
+        Escribir "Asiento #", asientoSolicitado, " solicitado por Servidor ", servidorGanador, " y Servidor ", servidorPerdedor;
+        Escribir "Latencia de red promedio: ", latenciaMs, " ms";
+
+        Si tipoConsistencia = "FUERTE" Entonces
+
+            Si estadoAsientos[servidorGanador, asientoSolicitado] = 0 Entonces
+                estadoAsientos[servidorGanador, asientoSolicitado] &lt;- 1;
+                estadoAsientos[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                bitacoraVentas[servidorGanador, asientoSolicitado] &lt;- 1;
+                totalVentasExitosas &lt;- totalVentasExitosas + 1;
+                Escribir "-> Consistencia FUERTE: venta confirmada en todos los nodos.";
+                Escribir "   Asiento vendido correctamente por Servidor ", servidorGanador;
+            SiNo
+                Escribir "-> Asiento ya vendido previamente, solicitud rechazada.";
+            FinSi
+
+        SiNo
+
+            Si tipoConsistencia = "EVENTUAL" Entonces
+
+                Si probabilidadConflicto > umbralIA Entonces
+                    hayConflicto &lt;- Verdadero;
+                FinSi
+
+                Si hayConflicto Entonces
+
+                    Si prioridadIA[servidorGanador] >= prioridadIA[servidorPerdedor] Entonces
+                        estadoAsientos[servidorGanador, asientoSolicitado] &lt;- 1;
+                        estadoAsientos[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                        bitacoraVentas[servidorGanador, asientoSolicitado] &lt;- 1;
+                        totalVentasExitosas &lt;- totalVentasExitosas + 1;
+                        Escribir "-> Conflicto detectado. IA bloqueo al Servidor ", servidorPerdedor;
+                        Escribir "   Venta asignada al Servidor ", servidorGanador;
+                    SiNo
+                        estadoAsientos[servidorGanador, asientoSolicitado] &lt;- 1;
+                        estadoAsientos[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                        bitacoraVentas[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                        totalVentasExitosas &lt;- totalVentasExitosas + 1;
+                        Escribir "-> Conflicto detectado. IA bloqueo al Servidor ", servidorGanador;
+                        Escribir "   Venta asignada al Servidor ", servidorPerdedor;
+                    FinSi
+
+                SiNo
+                    estadoAsientos[servidorGanador, asientoSolicitado] &lt;- 1;
+                    bitacoraVentas[servidorGanador, asientoSolicitado] &lt;- 1;
+                    totalVentasExitosas &lt;- totalVentasExitosas + 1;
+                    Escribir "-> Sin conflicto detectado. Venta procesada por Servidor  ", servidorGanador;
+                    Escribir "(los demás nodos se sincronizaran eventualmente)";
+                FinSi
+
+            SiNo
+
+                estadoAsientos[servidorGanador, asientoSolicitado] &lt;- 1;
+                estadoAsientos[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                bitacoraVentas[servidorGanador, asientoSolicitado] &lt;- 1;
+                bitacoraVentas[servidorPerdedor, asientoSolicitado] &lt;- 1;
+                totalVentasDobles &lt;- totalVentasDobles + 1;
+                Escribir "-> Consistencia DEBIL: no hubo verificacion entre nodos.";
+                Escribir "   ALERTA: Asiento ", asientoSolicitado, " vendido por AMBOS servidores (venta doble).";
+
+            FinSi
+
+        FinSi
+
+    FinPara
+
+    // REPORTE FINAL DE LA SIMULACION
+    Escribir "";
+    Escribir "====================================================";
+    Escribir "                REPORTE FINAL";
+    Escribir "====================================================";
+    Escribir "Modelo de consistencia usado: ", tipoConsistencia;
+    Escribir "Total de asientos procesados: ", numAsientos;
+    Escribir "Ventas exitosas sin conflicto: ", totalVentasExitosas;
+    Escribir "Ventas dobles detectadas: ", totalVentasDobles;
+
+    Si totalVentasDobles = 0 Entonces
+        Escribir "Resultado: el sistema mantuvo la consistencia correctamente.";
+    SiNo
+        Escribir "Resultado: se detectaron fallas de consistencia en el sistema.";
+    FinSi
+
+    Escribir "";
+    Escribir "Bitacora final de ventas por servidor y asiento:";
+    Para i &lt;- 1 Hasta numServidores Con Paso 1 Hacer
+        Escribir "Servidor ", i, ": ";
+        Para j &lt;- 1 Hasta numAsientos Con Paso 1 Hacer
+            Si bitacoraVentas[i, j] = 1 Entonces
+                Escribir "   Asiento ", j, " -> VENDIDO por este servidor";
+            FinSi
+        FinPara
+    FinPara
+
+    Escribir "";
+    Escribir "Fin de la simulacion.";
+
+FinProceso</code></pre>
+      </div>
+
+      <div class="simulator reveal">
+        <div class="simulator__header">
+          <div>
+            <h3>Ejecutar la simulación</h3>
+            <p>Elige un modelo y corre la lógica del pseudocódigo directamente en el navegador.</p>
+          </div>
+          <div class="simulator__controls">
+            <label for="modeloConsistencia" class="visually-hidden">Modelo de consistencia</label>
+            <select id="modeloConsistencia" class="simulator__select">
+              <option value="FUERTE">1. Consistencia Fuerte</option>
+              <option value="EVENTUAL" selected>2. Consistencia Eventual</option>
+              <option value="DEBIL">3. Consistencia Debil</option>
+            </select>
+            <button type="button" id="btnEjecutarSimulacion" class="btn btn--primary">Ejecutar simulación</button>
+          </div>
+        </div>
+
+        <div class="simulator__output" id="simulatorOutput" aria-live="polite">
+          <p class="simulator__placeholder">Presiona "Ejecutar simulación" para ver el resultado aquí, igual que en la consola de PSeInt.</p>
+        </div>
       </div>
     </section>
 
@@ -333,12 +573,12 @@
       </div>
       <p>Proyecto de la materia Lógica Computacional</p>
       <p class="footer__authors">
-        Autores: Jesús Bucarito (C.I. 32.557.742),
-        Jonathan Torrealba (C.I. 32.470.002),
-        Yascarly Martinez (C.I. 28.626.116),
-        Luis Farias (C.I 33.078.802), Jesús Rivera (C.I 30.891.940), Yonaikel Leiva (C.I 33.540.956)
+        Autores: Juan Ignacio García Hernández (C.I. 23.546.879),
+        Hernesto Quinto de la Vecindad (C.I. 34.879.009),
+        Petronila de los Ángeles (C.I. 22.456.789),
+        [Nombre integrante Luis], [Nombre integrante Jesús], [Nombre integrante Kalmita]
       </p>
-      <p>Universidad Nacional Experimental de Guayana</p>
+      <p>[Nombre de la universidad]</p>
       <p class="footer__year" id="footerYear">2026</p>
     </div>
   </footer>
@@ -346,6 +586,7 @@
   <!-- ===================== SCRIPTS ===================== -->
   <script src="js/animations.js"></script>
   <script src="js/navigation.js"></script>
+  <script src="js/simulator.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
