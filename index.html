@@ -36,7 +36,7 @@
         <a href="#inicio" class="navbar__link" data-section="inicio">Inicio</a>
         <a href="#introduccion" class="navbar__link" data-section="introduccion">Introducción</a>
         <a href="#contenido" class="navbar__link" data-section="contenido">Contenido</a>
-        <a href="#videos" class="navbar__link" data-section="videos">Videos</a>
+        <a href="#pseudocodigo" class="navbar__link" data-section="pseudocodigo">Pseudocódigo</a>
         <a href="#conclusion" class="navbar__link" data-section="conclusion">Conclusión</a>
       </nav>
     </div>
@@ -56,7 +56,7 @@
         </p>
         <div class="hero__actions">
           <a href="#introduccion" class="btn btn--primary" id="btnExplorar">Explorar el proyecto</a>
-          <a href="#videos" class="btn btn--ghost">Ver videos</a>
+          <a href="#pseudocodigo" class="btn btn--ghost">Ver pseudocódigo</a>
         </div>
       </div>
       <div class="hero__media reveal" aria-hidden="true">
@@ -95,6 +95,13 @@
             Entender sus modelos permite decidir qué tanto sacrificar velocidad a cambio de exactitud.
           </p>
         </div>
+      </div>
+
+      <div class="video-embed reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1vAuZkwbVCbVgv5h8s2yWDLm51yc0HARn/preview" title="Video: Introducción, presentado por Bucarito" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Bucarito</strong></p>
       </div>
     </section>
 
@@ -172,6 +179,13 @@
         </table>
       </div>
 
+      <div class="video-embed reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1trYLrHnFOy5kgDXeomBR8ZLb94ZX51MU/preview" title="Video: Tipos de consistencia, presentado por Luis" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Luis</strong></p>
+      </div>
+
       <!-- Caso de la vida real -->
       <div class="section__header reveal">
         <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 03 — Caso de la vida real</p>
@@ -204,6 +218,13 @@
         </div>
       </div>
 
+      <div class="video-embed reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1OV9w119VjDpU3MYZf4iYpRU3fi1y5MXT/preview" title="Video: Caso de la vida real, presentado por Jonathan" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Jonathan</strong></p>
+      </div>
+
       <!-- Mejora con IA -->
       <div class="section__header reveal">
         <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> 04 — Mejora con Inteligencia Artificial</p>
@@ -228,6 +249,13 @@
               la IA evita que dos nodos confirmen la misma operación al mismo tiempo.</li>
           </ul>
         </div>
+      </div>
+
+      <div class="video-embed reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1BZnmH7i-aGY-Sx1z7IK-S8XDf95MVsFW/preview" title="Video: Mejora con Inteligencia Artificial, presentado por Jesús" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Jesús</strong></p>
       </div>
 
       <!-- Ventajas de la IA -->
@@ -258,99 +286,12 @@
           <p>El sistema completo se comporta de forma más predecible ante los mismos conflictos.</p>
         </article>
       </div>
-    </section>
 
-    <!-- ===================== VIDEOS ===================== -->
-    <section class="section" id="videos">
-      <div class="section__header reveal">
-        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> Exposición en video</p>
-        <h2>Recorrido completo del tema</h2>
-        <p class="section__intro">
-          Cada integrante explica una parte del proyecto. Al final, un video adicional recorre el
-          pseudocódigo que simula los tres modelos de consistencia.
-        </p>
-      </div>
-
-      <div class="grid grid--3">
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/hero-nodes.svg">
-              <source src="videos/01-introduccion.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>1. Introducción</h3>
-          <p>Qué es la consistencia, qué son los sistemas distribuidos y por qué importa.</p>
-        </article>
-
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/hero-nodes.svg">
-              <source src="videos/02-tipos-de-consistencia.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>2. Tipos de consistencia</h3>
-          <p>Explicación y comparación de la consistencia fuerte, eventual y débil.</p>
-        </article>
-
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/reserva-vuelos.svg">
-              <source src="videos/03-caso-real.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>3. Caso de la vida real</h3>
-          <p>El ejemplo de la reserva de vuelos y la venta doble del mismo asiento.</p>
-        </article>
-
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/ia-sistemas.svg">
-              <source src="videos/04-mejora-con-ia.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>4. Mejora con Inteligencia Artificial</h3>
-          <p>Algoritmos predictivos, replicación de datos y prevención de conflictos.</p>
-        </article>
-
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/ia-sistemas.svg">
-              <source src="videos/05-ventajas-de-la-ia.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>5. Ventajas de la IA</h3>
-          <p>Menos errores, más velocidad y mayor confiabilidad del sistema.</p>
-        </article>
-
-        <article class="video-card reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/hero-nodes.svg">
-              <source src="videos/06-conclusion.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>6. Conclusión</h3>
-          <p>Resumen del trabajo grupal y cierre de la exposición.</p>
-        </article>
-
-        <article class="video-card video-card--wide reveal">
-          <div class="video-card__player">
-            <video controls preload="metadata" poster="img/hero-nodes.svg">
-              <source src="videos/07-pseudocodigo.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de este video.
-            </video>
-          </div>
-          <h3>7. Explicación del pseudocódigo</h3>
-          <p>
-            Recorrido por el pseudocódigo que simula los tres modelos de consistencia sobre un sistema de
-            venta de asientos, y el reporte final que compara sus resultados.
-          </p>
-        </article>
+      <div class="video-embed reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1HfqleXkITXLfQEaleotvQgNurvZ1L-v7/preview" title="Video: Ventajas de la IA, presentado por Levi" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Levi</strong></p>
       </div>
     </section>
 
@@ -373,6 +314,39 @@
           haciendo que sistemas distribuidos grandes sean, a la vez, rápidos y confiables.
         </p>
       </div>
+
+      <div class="video-embed video-embed--light reveal">
+        <div class="video-embed__frame">
+          <iframe src="https://drive.google.com/file/d/1O8v1mltuys-EzyMhkU6Mufhw_KsGmhVg/preview" title="Video: Conclusión, presentado por Kalmita" allow="autoplay" loading="lazy"></iframe>
+        </div>
+        <p class="video-embed__caption">Presenta: <strong>Kalmita</strong></p>
+      </div>
+    </section>
+
+    <!-- ===================== PSEUDOCÓDIGO ===================== -->
+    <section class="section" id="pseudocodigo">
+      <div class="section__header reveal">
+        <p class="eyebrow"><span class="node-dot" aria-hidden="true"></span> Explicación técnica</p>
+        <h2>Recorrido por el pseudocódigo</h2>
+        <p class="section__intro">
+          Para cerrar, este video recorre el pseudocódigo que simula los tres modelos de consistencia sobre
+          un sistema de venta de asientos, y el reporte final que compara sus resultados.
+        </p>
+      </div>
+
+      <article class="video-card reveal">
+        <div class="video-card__player">
+          <video controls preload="metadata" poster="img/hero-nodes.svg">
+            <source src="videos/07-pseudocodigo.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de este video.
+          </video>
+        </div>
+        <h3>Explicación del pseudocódigo</h3>
+        <p>
+          Consistencia fuerte, eventual y débil aplicadas a la venta de asientos, con generador
+          pseudoaleatorio propio y reporte final de resultados.
+        </p>
+      </article>
     </section>
 
   </main>
