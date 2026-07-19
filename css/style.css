@@ -585,9 +585,63 @@ video:focus-visible {
 }
 
 /* =========================================================
+   VIDEOS EMBEBIDOS (Google Drive)
+   Cada integrante presenta su parte junto al contenido
+   correspondiente, en vez de agrupar todos los videos al final.
+========================================================= */
+.video-embed {
+  margin-top: var(--space-lg);
+  max-width: 880px;
+  width: 100%;
+}
+
+.video-embed__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-primary-dark);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.video-embed__frame:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.video-embed__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-embed__caption {
+  margin: var(--space-xs) 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.video-embed__caption strong {
+  color: var(--color-primary);
+}
+
+.video-embed--light .video-embed__caption {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.video-embed--light .video-embed__caption strong {
+  color: #ffffff;
+}
+
+/* =========================================================
    VIDEOS
 ========================================================= */
 .video-card {
+  max-width: 880px;
   background-color: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -613,7 +667,7 @@ video:focus-visible {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .video-card h3 {
