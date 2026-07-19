@@ -591,14 +591,14 @@ video:focus-visible {
 ========================================================= */
 .video-embed {
   margin-top: var(--space-lg);
-  max-width: 340px;
+  max-width: 640px;
   width: 100%;
 }
 
 .video-embed__frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
