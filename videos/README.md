@@ -1,18 +1,17 @@
 # Carpeta de videos
 
-Coloca aquí los archivos de video de la exposición, en formato **.mp4**, con estos nombres exactos
-(así el `index.html` los reconoce automáticamente sin que tengas que tocar el código):
+Los 6 videos de la exposición (introducción, tipos de consistencia, caso real, mejora con IA, ventajas
+de la IA y conclusión) NO van en esta carpeta: se reproducen directamente desde Google Drive mediante
+un `<iframe>` embebido en cada sección de `index.html`, para evitar que YouTube los elimine.
 
-1. `01-introduccion.mp4`
-2. `02-tipos-de-consistencia.mp4`
-3. `03-caso-real.mp4`
-4. `04-mejora-con-ia.mp4`
-5. `05-ventajas-de-la-ia.mp4`
-6. `06-conclusion.mp4`
-7. `07-pseudocodigo.mp4`
+Si necesitas cambiar el enlace de alguno de esos videos, busca en `index.html` la línea con:
+```
+<iframe src="https://drive.google.com/file/d/TU_ID_AQUI/preview" ...>
+```
+y reemplaza `TU_ID_AQUI` por el ID del archivo de tu Google Drive (la parte de la URL entre `/d/` y
+`/view`). Asegúrate también de que el archivo en Drive tenga permisos de "Cualquier persona con el
+enlace puede ver", o el video no cargará para quien visite la página.
 
-Recomendaciones:
-- Comprime los videos antes de subirlos a GitHub Pages (idealmente menos de 50 MB cada uno) para que
-  la página cargue rápido.
-- Si cambias algún nombre de archivo, actualiza la etiqueta `<source src="...">` correspondiente en
-  `index.html`.
+Esta carpeta actualmente no se usa para ningún archivo local (el video del pseudocódigo se quitó de
+la página porque no hay nadie asignado a presentarlo). Si más adelante agregan ese video, pueden
+colocarlo aquí y volver a agregar su sección en `index.html`.
